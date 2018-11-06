@@ -23,6 +23,17 @@ describe Game do
       end
       expect(game.score).to eq(20)
     end
+
+    it "spare in the first frame followed by three pins and all missed scores 16" do
+      game = Game.new
+      game.roll(5)
+      game.roll(5)
+      game.roll(3)
+      17.times do
+        game.roll(0)
+      end
+      expect(game.score).to eq(16)
+    end
   end
 
   describe "#score" do
