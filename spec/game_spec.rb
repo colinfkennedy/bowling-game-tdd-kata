@@ -7,6 +7,13 @@ describe Game do
       game = Game.new
       expect(game).to respond_to(:roll)
     end
+  end
+
+  describe "#score" do
+    it "responds to #roll" do
+      game = Game.new
+      expect(game).to respond_to(:score)
+    end
 
     it "all misses score a zero" do
       game = Game.new
@@ -45,12 +52,16 @@ describe Game do
       end
       expect(game.score).to eq(24)
     end
-  end
 
-  describe "#score" do
-    it "responds to #roll" do
+    it "A perfect game (12 strikes) scores 300." do
       game = Game.new
-      expect(game).to respond_to(:score)
+      game.roll(10)
+      game.roll(3)
+      game.roll(4)
+      17.times do
+        game.roll(0)
+      end
+      expect(game.score).to eq(24)
     end
   end
 end
