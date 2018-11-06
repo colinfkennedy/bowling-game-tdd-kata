@@ -5,15 +5,12 @@ class Game
   def initialize
     @score = 0
     @frames = []
-    @count = 0
   end
 
   def roll(pin)
     @frames << pin
-    @count += 1
     if strike?(pin)
       @frames << 0
-      @count += 1
     end
   end
 
