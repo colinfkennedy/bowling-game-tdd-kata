@@ -24,7 +24,7 @@ describe Game do
       expect(game.score).to eq(20)
     end
 
-    it "spare in the first frame followed by three pins and all missed scores 16" do
+    it "A spare in the first frame, followed by three pins, followed by all misses scores 16." do
       game = Game.new
       game.roll(5)
       game.roll(5)
@@ -33,6 +33,17 @@ describe Game do
         game.roll(0)
       end
       expect(game.score).to eq(16)
+    end
+
+    it "A strike in the first frame, followed by three and then four pins, followed by all misses, scores 24." do
+      game = Game.new
+      game.roll(10)
+      game.roll(3)
+      game.roll(4)
+      17.times do
+        game.roll(0)
+      end
+      expect(game.score).to eq(24)
     end
   end
 
