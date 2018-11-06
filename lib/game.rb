@@ -1,15 +1,15 @@
 class Game
 
-  attr_accessor :frames, :count
+  attr_accessor :frames
 
   def initialize
     @score = 0
     @frames = []
   end
 
-  def roll(pin)
-    @frames << pin
-    if strike?(pin)
+  def roll(pins)
+    @frames << pins
+    if strike?(pins)
       @frames << 0
     end
   end
@@ -35,7 +35,7 @@ class Game
     @frames.reduce(0, :+)
   end
 
-  private def strike?(pin)
-    pin == 10
+  private def strike?(pins)
+    pins == 10
   end
 end
